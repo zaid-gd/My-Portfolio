@@ -12,7 +12,7 @@ const SITE_CONTENT = {
       "Semantic HTML and ARIA best practices",
     ],
   },
-  skills: ["HTML", "CSS", "JavaScript", "React", "GSAP", "Tailwind", "Accessibility", "Performance"],
+  skills: ["Video editing", "Game development", "Motion graphics (basics)"],
   projects: [
     { title: "Interactive Dashboard", blurb: "Real-time charts with smooth transitions and dynamic theming.", url: "#" },
     { title: "Portfolio Engine", blurb: "Static-site portfolio with markdown content and image optimization.", url: "#" },

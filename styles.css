@@ -88,8 +88,13 @@ p { margin: 0 0 12px; }
 .site-footer { border-top: 1px solid var(--border); background: #0a0d14; }
 .footer-content { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 26px 0; }
 .socials { display: flex; gap: 14px; }
-.social { color: var(--muted); text-decoration: none; }
+.social { color: var(--muted); text-decoration: none; position: relative; }
+.social::after { content: ""; position: absolute; left: 0; bottom: -3px; width: 0; height: 2px; background: linear-gradient(90deg, var(--primary), var(--accent)); transition: width 0.25s ease; }
 .social:hover { color: var(--text); }
+.social:hover::after { width: 100%; }
+
+/* Coming soon badge */
+.badge { display: inline-block; padding: 2px 8px; border-radius: 999px; background: rgba(255,255,255,0.06); border: 1px solid var(--border); color: var(--muted); font-size: 12px; font-weight: 600; margin-left: 8px; }
 
 /* Parallax layers */
 .parallax { position: absolute; inset: 0; pointer-events: none; }

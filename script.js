@@ -1,29 +1,64 @@
 // Personalization config
 const SITE_CONTENT = {
-  logo: "LG",
-  name: "Legend",
-  role: "Frontend Developer",
-  tagline: "I build fast, elegant, and accessible web experiences.",
+  logo: "ZA",
+  name: "Zaid Ali (Screen)",
+  role: "Professional Video Editor, Content Creator & Game Developer at ZNS Studios",
+  tagline: "Crafting compelling visual stories and interactive experiences through professional video editing and game development",
   about: {
-    intro: "I craft performant UIs with modern tooling, component-driven architectures, and thoughtful micro-interactions. I care about clean design, accessibility, and maintainable code.",
+    intro: "I'm Zaid Ali, professionally known as \"Screen\" - a passionate video editor, content creator, and game developer. As Co-Founder of ZNS Enterprises, I'm building a creative ecosystem with multiple divisions:",
     bullets: [
-      "Responsive, mobile-first layouts",
-      "Animations that enhance, not distract",
-      "Semantic HTML and ARIA best practices",
+      "ZNS Studios: Currently developing an exciting gaming project and interactive experiences",
+      "ZNS Productions: Short films and cinematic content (launching soon)",
+      "ZNS Nexus: A platform to connect clients with skilled professionals for editing, coding, and creative services (coming soon)",
+      "I specialize in transforming raw footage into compelling stories and creating engaging gaming experiences that captivate audiences.",
     ],
   },
-  skills: ["Video editing", "Game development", "Motion graphics (basics)"],
+  skills: [
+    "Professional Video Editing (Premiere Pro, After Effects, DaVinci Resolve)",
+    "Content Creation & Strategy",
+    "Game Development (Unity, C#, Game Design)",
+    "Motion Graphics & Animation",
+    "YouTube Content Creation",
+    "Project Management & Entrepreneurship",
+  ],
   projects: [
-    { title: "Interactive Dashboard", blurb: "Real-time charts with smooth transitions and dynamic theming.", url: "#" },
-    { title: "Portfolio Engine", blurb: "Static-site portfolio with markdown content and image optimization.", url: "#" },
-    { title: "Landing Page Kit", blurb: "Accessible components and delightful micro-interactions.", url: "#" },
+    {
+      title: "Video Editing Portfolio",
+      blurb: "Professional video editing showcase featuring tutorials, creative edits, and engaging content across multiple platforms.",
+      url: "https://www.instagram.com/worksmarttutorial/",
+      secondary: { text: "View YouTube work", url: "https://www.youtube.com/@TheSmartBox" }
+    },
+    {
+      title: "Gaming Project - ZNS Studios",
+      blurb: "Currently developing an innovative gaming experience that combines engaging gameplay with compelling storytelling.",
+      url: null,
+      badge: "Coming Soon",
+    },
+    {
+      title: "Content Creation Hub",
+      blurb: "Multi-platform content creation including gaming content, tutorials, and creative projects.",
+      url: "https://www.youtube.com/@GachaScreen",
+    },
+    {
+      title: "ZNS Productions",
+      blurb: "Short films and cinematic content.",
+      url: null,
+      badge: "Coming Soon",
+    },
+    {
+      title: "ZNS Nexus",
+      blurb: "Connecting clients with skilled professionals for editing, coding, and creative services.",
+      url: null,
+      badge: "Coming Soon",
+    },
   ],
   socials: [
     { label: "GitHub", url: "#" },
-    { label: "LinkedIn", url: "#" },
-    { label: "Twitter", url: "#" },
+    { label: "Instagram", url: "https://www.instagram.com/zaid.ansari.10/" },
+    { label: "YouTube", url: "https://www.youtube.com/@GachaScreen" },
+    { label: "Work Portfolio", url: "https://www.instagram.com/worksmarttutorial/" },
   ],
-  contactCta: "Have a project in mind? Let’s build something great together.",
+  contactCta: "Have a project in mind? Let's create something amazing together!",
 };
 
 // Utility: throttle for scroll events
@@ -173,12 +208,14 @@ function populateContent() {
       const article = document.createElement('article');
       article.className = 'card reveal-fade';
       article.setAttribute('data-delay', String(0.05 + idx * 0.05));
+      const primaryLink = p.url ? `<a href="${p.url}" class="card-link" target="_blank" rel="noopener noreferrer">View project</a>` : `<span class="badge">${p.badge || 'Coming Soon'}</span>`;
+      const secondaryLink = p.secondary ? ` <a href="${p.secondary.url}" class="card-link" target="_blank" rel="noopener noreferrer">${p.secondary.text}</a>` : '';
       article.innerHTML = `
         <div class="card-media"></div>
         <div class="card-body">
-          <h3>${p.title}</h3>
+          <h3>${p.title}${p.badge && !p.url ? ` <span class=\"badge\">${p.badge}</span>` : ''}</h3>
           <p>${p.blurb}</p>
-          <a href="${p.url}" class="card-link" target="_blank" rel="noopener noreferrer">View project</a>
+          <div>${primaryLink}${secondaryLink}</div>
         </div>
       `;
       cards.appendChild(article);

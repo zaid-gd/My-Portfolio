@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Portfolio • Scroll Animated</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Scroll progress bar -->
+  <div id="scroll-progress"></div>
+
+  <header class="site-header">
+    <div class="container nav-container">
+      <a class="logo" href="#hero" aria-label="Go to top">LG</a>
+      <nav class="site-nav" aria-label="Primary">
+        <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <ul class="nav-list">
+          <li><a class="nav-link" href="#about">About</a></li>
+          <li><a class="nav-link" href="#projects">Projects</a></li>
+          <li><a class="nav-link" href="#skills">Skills</a></li>
+          <li><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero with parallax layers -->
+  <section id="hero" class="section-hero" aria-label="Hero">
+    <div class="parallax">
+      <div class="layer layer-back" data-depth="0.1"></div>
+      <div class="layer layer-mid" data-depth="0.2"></div>
+      <div class="layer layer-front" data-depth="0.4"></div>
+    </div>
+    <div class="container hero-content">
+      <p class="eyebrow reveal-up" data-delay="0">Hi, I’m</p>
+      <h1 class="headline reveal-up" data-delay="0.05">Legend • Frontend Developer</h1>
+      <p class="subhead reveal-up" data-delay="0.1">I build fast, elegant, and accessible web experiences.</p>
+      <div class="cta-row reveal-up" data-delay="0.15">
+        <a href="#projects" class="btn btn-primary">See my work</a>
+        <a href="#contact" class="btn btn-ghost">Contact me</a>
+      </div>
+    </div>
+  </section>
+
+  <main id="content" class="site-main">
+    <section id="about" class="section section-alt" aria-label="About">
+      <div class="container grid-two">
+        <div class="col reveal-up" data-delay="0">
+          <h2>About</h2>
+          <p>
+            I craft performant UIs with modern tooling, component-driven architectures, and
+            thoughtful micro-interactions. I care about clean design, accessibility, and
+            maintainable code.
+          </p>
+        </div>
+        <div class="col reveal-up" data-delay="0.05">
+          <ul class="bullets">
+            <li>Responsive, mobile-first layouts</li>
+            <li>Animations that enhance, not distract</li>
+            <li>Semantic HTML and ARIA best practices</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section" aria-label="Projects">
+      <div class="container">
+        <h2 class="reveal-up" data-delay="0">Projects</h2>
+        <div class="cards">
+          <article class="card reveal-fade" data-delay="0.05">
+            <div class="card-media"></div>
+            <div class="card-body">
+              <h3>Interactive Dashboard</h3>
+              <p>Real-time charts with smooth transitions and dynamic theming.</p>
+              <a href="#" class="card-link">View project</a>
+            </div>
+          </article>
+          <article class="card reveal-fade" data-delay="0.1">
+            <div class="card-media"></div>
+            <div class="card-body">
+              <h3>Portfolio Engine</h3>
+              <p>Static-site portfolio with markdown content and image optimization.</p>
+              <a href="#" class="card-link">View project</a>
+            </div>
+          </article>
+          <article class="card reveal-fade" data-delay="0.15">
+            <div class="card-media"></div>
+            <div class="card-body">
+              <h3>Landing Page Kit</h3>
+              <p>Accessible components and delightful micro-interactions.</p>
+              <a href="#" class="card-link">View project</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section section-alt" aria-label="Skills">
+      <div class="container">
+        <h2 class="reveal-up" data-delay="0">Skills</h2>
+        <div class="skills-cloud">
+          <span class="tag reveal-up" data-delay="0.05">HTML</span>
+          <span class="tag reveal-up" data-delay="0.075">CSS</span>
+          <span class="tag reveal-up" data-delay="0.1">JavaScript</span>
+          <span class="tag reveal-up" data-delay="0.125">React</span>
+          <span class="tag reveal-up" data-delay="0.15">GSAP</span>
+          <span class="tag reveal-up" data-delay="0.175">Tailwind</span>
+          <span class="tag reveal-up" data-delay="0.2">Accessibility</span>
+          <span class="tag reveal-up" data-delay="0.225">Performance</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section" aria-label="Contact">
+      <div class="container grid-two">
+        <div class="col reveal-up" data-delay="0">
+          <h2>Contact</h2>
+          <p>Have a project in mind? Let’s build something great together.</p>
+        </div>
+        <form class="contact-form reveal-up" data-delay="0.05" onsubmit="return false;">
+          <div class="form-row">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required />
+          </div>
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required />
+          </div>
+          <div class="form-row">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Tell me about your project..."></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Send</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>© <span id="year"></span> Legend. All rights reserved.</p>
+      <div class="socials">
+        <a href="#" aria-label="GitHub" class="social">GitHub</a>
+        <a href="#" aria-label="LinkedIn" class="social">LinkedIn</a>
+        <a href="#" aria-label="Twitter" class="social">Twitter</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+

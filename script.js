@@ -168,10 +168,13 @@ function populateContent() {
   if (logoEl) logoEl.textContent = logo;
 
   const heroEyebrow = document.querySelector('.eyebrow');
-  if (heroEyebrow) heroEyebrow.textContent = `Hi, I’m`;
+  if (heroEyebrow) {
+    const firstName = name.split(' ')[0] || name;
+    heroEyebrow.textContent = `Hi, I’m ${firstName}`;
+  }
 
   const headline = document.querySelector('.headline');
-  if (headline) headline.textContent = `${name} • ${role}`;
+  if (headline) headline.textContent = role;
 
   const subhead = document.querySelector('.subhead');
   if (subhead) subhead.textContent = tagline;

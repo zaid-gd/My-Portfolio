@@ -1,3 +1,31 @@
+// Personalization config
+const SITE_CONTENT = {
+  logo: "LG",
+  name: "Legend",
+  role: "Frontend Developer",
+  tagline: "I build fast, elegant, and accessible web experiences.",
+  about: {
+    intro: "I craft performant UIs with modern tooling, component-driven architectures, and thoughtful micro-interactions. I care about clean design, accessibility, and maintainable code.",
+    bullets: [
+      "Responsive, mobile-first layouts",
+      "Animations that enhance, not distract",
+      "Semantic HTML and ARIA best practices",
+    ],
+  },
+  skills: ["HTML", "CSS", "JavaScript", "React", "GSAP", "Tailwind", "Accessibility", "Performance"],
+  projects: [
+    { title: "Interactive Dashboard", blurb: "Real-time charts with smooth transitions and dynamic theming.", url: "#" },
+    { title: "Portfolio Engine", blurb: "Static-site portfolio with markdown content and image optimization.", url: "#" },
+    { title: "Landing Page Kit", blurb: "Accessible components and delightful micro-interactions.", url: "#" },
+  ],
+  socials: [
+    { label: "GitHub", url: "#" },
+    { label: "LinkedIn", url: "#" },
+    { label: "Twitter", url: "#" },
+  ],
+  contactCta: "Have a project in mind? Let’s build something great together.",
+};
+
 // Utility: throttle for scroll events
 function throttle(fn, wait) {
   let last = 0;
@@ -96,5 +124,90 @@ const yearEl = document.getElementById('year');
 if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
 }
+
+// Populate static content from config
+function populateContent() {
+  const { logo, name, role, tagline, about, skills, projects, socials, contactCta } = SITE_CONTENT;
+
+  const logoEl = document.querySelector('.logo');
+  if (logoEl) logoEl.textContent = logo;
+
+  const heroEyebrow = document.querySelector('.eyebrow');
+  if (heroEyebrow) heroEyebrow.textContent = `Hi, I’m`;
+
+  const headline = document.querySelector('.headline');
+  if (headline) headline.textContent = `${name} • ${role}`;
+
+  const subhead = document.querySelector('.subhead');
+  if (subhead) subhead.textContent = tagline;
+
+  const aboutP = document.querySelector('#about p');
+  if (aboutP) aboutP.textContent = about.intro;
+
+  const bulletsUl = document.querySelector('#about .bullets');
+  if (bulletsUl) {
+    bulletsUl.innerHTML = '';
+    about.bullets.forEach((b) => {
+      const li = document.createElement('li');
+      li.textContent = b;
+      bulletsUl.appendChild(li);
+    });
+  }
+
+  const skillsCloud = document.querySelector('.skills-cloud');
+  if (skillsCloud) {
+    skillsCloud.innerHTML = '';
+    skills.forEach((s, i) => {
+      const span = document.createElement('span');
+      span.className = 'tag reveal-up';
+      span.setAttribute('data-delay', String(0.05 + i * 0.025));
+      span.textContent = s;
+      skillsCloud.appendChild(span);
+    });
+  }
+
+  const cards = document.querySelector('#projects .cards');
+  if (cards) {
+    cards.innerHTML = '';
+    projects.forEach((p, idx) => {
+      const article = document.createElement('article');
+      article.className = 'card reveal-fade';
+      article.setAttribute('data-delay', String(0.05 + idx * 0.05));
+      article.innerHTML = `
+        <div class="card-media"></div>
+        <div class="card-body">
+          <h3>${p.title}</h3>
+          <p>${p.blurb}</p>
+          <a href="${p.url}" class="card-link" target="_blank" rel="noopener noreferrer">View project</a>
+        </div>
+      `;
+      cards.appendChild(article);
+    });
+  }
+
+  const socialsWrap = document.querySelector('.socials');
+  if (socialsWrap) {
+    socialsWrap.innerHTML = '';
+    socials.forEach((s) => {
+      const a = document.createElement('a');
+      a.href = s.url;
+      a.className = 'social';
+      a.setAttribute('aria-label', s.label);
+      a.textContent = s.label;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      socialsWrap.appendChild(a);
+    });
+  }
+
+  const contactLead = document.querySelector('#contact .col p');
+  if (contactLead) contactLead.textContent = contactCta;
+
+  // Re-attach reveal observers for newly created elements
+  const newReveals = Array.from(document.querySelectorAll('.reveal-up, .reveal-fade'));
+  newReveals.forEach((el) => revealObserver.observe(el));
+}
+
+populateContent();
 
 

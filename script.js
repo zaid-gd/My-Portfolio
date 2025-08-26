@@ -1,8 +1,8 @@
 // Personalization config
 const SITE_CONTENT = {
   logo: "ZA",
-  name: "Zaid Ali (Screen)",
-  role: "Professional Video Editor, Content Creator & Game Developer at ZNS Studios",
+  name: "Zaid Ali",
+  role: "Video Editor, Content Creator & Game Developer at ZNS Studios",
   tagline: "Crafting compelling visual stories and interactive experiences through professional video editing and game development",
   about: {
     intro: "I'm Zaid Ali, professionally known as \"Screen\" - a passionate video editor, content creator, and game developer. As Co-Founder of ZNS Enterprises, I'm building a creative ecosystem with multiple divisions:",
@@ -14,9 +14,9 @@ const SITE_CONTENT = {
     ],
   },
   skills: [
-    "Professional Video Editing (Premiere Pro, After Effects, DaVinci Resolve)",
+    "Professional Video Editing (Premiere Pro, DaVinci Resolve)",
     "Content Creation & Strategy",
-    "Game Development (Unity, C#, Game Design)",
+    "Game Development (Unreal Engine, Blueprints, Level Design)",
     "Motion Graphics & Animation",
     "YouTube Content Creation",
     "Project Management & Entrepreneurship",
@@ -56,8 +56,8 @@ const SITE_CONTENT = {
     { label: "GitHub", url: "https://github.com/zaid-gd" },
     { label: "Instagram", url: "https://www.instagram.com/zaid.ansari.10/" },
     { label: "YouTube", url: "https://www.youtube.com/@GachaScreen" },
-    { label: "Work Portfolio", url: "https://www.instagram.com/worksmarttutorial/" },
-  ],
+    { label: "Work Portfolio", url: null },
+  ],  
   contactCta: "Have a project in mind? Let's create something amazing together!",
 };
 
@@ -226,6 +226,7 @@ function populateContent() {
   if (socialsWrap) {
     socialsWrap.innerHTML = '';
     socials.forEach((s) => {
+      if (!s.url) return; // skip socials without a URL
       const a = document.createElement('a');
       a.href = s.url;
       a.className = 'social';

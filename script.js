@@ -56,7 +56,7 @@ const SITE_CONTENT = {
   ],
   socials: [
     { label: "GitHub", url: "https://github.com/zaid-gd" },
-    { label: "Instagram", url: "https://www.instagram.com/screen_5127/" },
+    { label: "Instagram", url: "https://www.instagram.com/zaid.ansari.10/" },
     { label: "YouTube", url: "https://www.youtube.com/@GachaScreen" },
     { label: "Work Portfolio", url: null },
   ],  

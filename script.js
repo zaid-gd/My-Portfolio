@@ -10,7 +10,6 @@ const SITE_CONTENT = {
       "ZNS Studios: Currently developing an exciting gaming project and interactive experiences",
       "ZNS Productions: Short films and cinematic content (launching soon)",
       "ZNS Nexus: A platform to connect clients with skilled professionals for editing, coding, and creative services (coming soon)",
-      "I specialize in transforming raw footage into compelling stories and creating engaging gaming experiences that captivate audiences.",
     ],
   },
   skills: [
@@ -26,18 +25,21 @@ const SITE_CONTENT = {
       title: "Video Editing Portfolio",
       blurb: "Professional video editing showcase featuring tutorials, creative edits, and engaging content across multiple platforms.",
       url: "https://www.instagram.com/worksmarttutorial/",
-      secondary: { text: "View YouTube work", url: "https://www.youtube.com/@TheSmartBox" }
+      secondary: { text: "View YouTube work", url: "https://www.youtube.com/@TheSmartBox" },
+      image: "assets/portfolio-editing.jpg"
     },
     {
       title: "Gaming Project - ZNS Studios",
       blurb: "Currently developing an innovative gaming experience that combines engaging gameplay with compelling storytelling.",
       url: null,
       badge: "Coming Soon",
+      image: "assets/game-project.jpg"
     },
     {
       title: "Content Creation Hub",
       blurb: "Multi-platform content creation including gaming content, tutorials, and creative projects.",
-      url: "https://www.youtube.com/@GachaScreen",
+      url: "https://www.instagram.com/screen_5127/",
+      image: "assets/content-hub.jpg"
     },
     {
       title: "ZNS Productions",
@@ -54,11 +56,16 @@ const SITE_CONTENT = {
   ],
   socials: [
     { label: "GitHub", url: "https://github.com/zaid-gd" },
-    { label: "Instagram", url: "https://www.instagram.com/zaid.ansari.10/" },
+    { label: "Instagram", url: "https://www.instagram.com/screen_5127/" },
     { label: "YouTube", url: "https://www.youtube.com/@GachaScreen" },
     { label: "Work Portfolio", url: null },
   ],  
   contactCta: "Have a project in mind? Let's create something amazing together!",
+  heroImages: {
+    back: "assets/hero-back.jpg",
+    mid: "assets/hero-mid.png",
+    front: "assets/hero-front.png"
+  }
 };
 
 // Utility: throttle for scroll events
@@ -154,6 +161,12 @@ function updateParallax() {
 window.addEventListener('scroll', throttle(updateParallax, 20), { passive: true });
 updateParallax();
 
+// Place hero background images
+const heroImages = SITE_CONTENT.heroImages || {};
+document.querySelector(".layer-back")?.style.setProperty("background-image", heroImages.back ? `url("${heroImages.back}")` : "");
+document.querySelector(".layer-mid")?.style.setProperty("background-image", heroImages.mid ? `url("${heroImages.mid}")` : "");
+document.querySelector(".layer-front")?.style.setProperty("background-image", heroImages.front ? `url("${heroImages.front}")` : "");
+
 // Footer year
 const yearEl = document.getElementById('year');
 if (yearEl) {
@@ -169,8 +182,7 @@ function populateContent() {
 
   const heroEyebrow = document.querySelector('.eyebrow');
   if (heroEyebrow) {
-    const firstName = name.split(' ')[0] || name;
-    heroEyebrow.textContent = `Hi, I’m ${firstName}`;
+    heroEyebrow.textContent = `Hi, I’m ${name}`;
   }
 
   const headline = document.querySelector('.headline');
@@ -221,6 +233,12 @@ function populateContent() {
           <div>${primaryLink}${secondaryLink}</div>
         </div>
       `;
+      const media = article.querySelector(".card-media");
+      if (media && p.image) {
+        media.style.backgroundImage = `url("${p.image}")`;
+        media.style.backgroundSize = "cover";
+        media.style.backgroundPosition = "center";
+      }
       cards.appendChild(article);
     });
   }

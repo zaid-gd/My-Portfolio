@@ -224,6 +224,7 @@ function populateContent() {
       const article = document.createElement('article');
       article.className = 'card reveal-fade';
       article.setAttribute('data-delay', String(0.05 + idx * 0.05));
+      article.setAttribute('data-parallax', '0.06');
       const primaryLink = p.url ? `<a href="${p.url}" class="card-link" target="_blank" rel="noopener noreferrer">View project</a>` : `<span class="badge">${p.badge || 'Coming Soon'}</span>`;
       const secondaryLink = p.secondary ? ` <a href="${p.secondary.url}" class="card-link" target="_blank" rel="noopener noreferrer">${p.secondary.text}</a>` : '';
       article.innerHTML = `
@@ -269,5 +270,21 @@ function populateContent() {
 }
 
 populateContent();
+
+// Subtle scroll parallax for elements with data-parallax
+const parallaxEls = Array.from(document.querySelectorAll('[data-parallax]'));
+function updateScrollParallax() {
+  const viewportH = window.innerHeight || document.documentElement.clientHeight;
+  parallaxEls.forEach((el) => {
+    const rect = el.getBoundingClientRect();
+    const ratio = (rect.top + rect.height / 2 - viewportH / 2) / viewportH; // -0.5..0.5 roughly
+    const strength = Number(el.getAttribute('data-parallax') || 0.05);
+    const translate = Math.max(-20, Math.min(20, ratio * strength * 200));
+    el.style.transform = `translate3d(0, ${translate}px, 0)`;
+  });
+}
+window.addEventListener('scroll', throttle(updateScrollParallax, 20), { passive: true });
+window.addEventListener('resize', throttle(updateScrollParallax, 50));
+updateScrollParallax();
 
 
